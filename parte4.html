@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAMUEL MARQUEZ</title>
+
+<link rel="icon" href="image/sasu.ico">
+
+<style>
+
+/* RESET */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: white;
+  font-size: 28px;
+  font-family: Arial, sans-serif;
+}
+
+/* VIDEO (👇 SOLO AJUSTADO) */
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: -2;
+}
+
+
+/* MENU */
+.menu {
+  position: fixed;
+  top: 15px;
+  right: 25px;
+  z-index: 1000;
+}
+
+.links {
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 14px 25px;
+  border-radius: 40px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  list-style: none;
+}
+
+.links a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  transition: 0.3s;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: red;
+  transition: 0.3s;
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+
+  padding: 10px;
+  border-radius: 15px;
+
+  list-style: none;
+  min-width: 140px;
+  transition: 0.3s;
+}
+
+.submenu li {
+  padding: 6px 10px;
+}
+
+.submenu a {
+  font-size: 16px;
+}
+
+.dropdown:hover .submenu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* CONTENIDO */
+.contenido {
+  max-width: 600px;
+  margin: 120px 0 0 5%;
+  text-align: left;
+}
+
+.nombre, .titulo, p {
+  text-shadow: 0 0 10px rgba(0,0,0,0.9);
+}
+
+/* TITULO */
+.titulo {
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: bold;
+  margin-bottom: 30px;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: scale(0.3);
+
+  animation: animeImpacto 1s cubic-bezier(.17,.67,.83,.67) forwards,
+             brilloAnime 2s infinite alternate;
+
+  animation-delay: 0.5s;
+}
+
+@keyframes animeImpacto {
+  0% { opacity: 0; transform: scale(0.3); filter: blur(15px); }
+  50% { opacity: 1; transform: scale(1.3); }
+  70% { transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes brilloAnime {
+  0% { text-shadow: 0 0 10px red, 0 0 20px red; }
+  100% { text-shadow: 0 0 20px #ff4d4d, 0 0 40px #ff0000; }
+}
+
+/* LIBRO */
+.libro {
+  display: flex;
+  gap: 40px;
+  margin: 40px 5%;
+}
+
+.pagina {
+  flex: 1;
+  background: rgba(0,0,0,0.45);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  animation: aparecer 1s forwards;
+}
+
+/* TEXTO */
+p {
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+@keyframes aparecer {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+p:hover {
+  color: #ff4d4d;
+}
+
+/* BOTON MUSICA */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: red;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* 📱 MODO CELULAR */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  .links {
+    gap: 15px;
+    padding: 10px 15px;
+  }
+
+  .links a {
+    font-size: 14px;
+  }
+
+  .contenido {
+    margin: 100px 10px 0 10px;
+    max-width: 100%;
+  }
+
+  .titulo {
+    font-size: 28px;
+    white-space: normal;
+  }
+
+  .libro {
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px;
+  }
+
+  .pagina {
+    padding: 15px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  /* imágenes o gifs */
+  img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  /* carrusel */
+  .carrusel img {
+    width: 180px;
+    height: 180px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<nav class="menu">
+<ul class="links">
+<li><a href="index.html">Inicio</a></li>
+
+<li class="dropdown">
+<a href="#">índice</a>
+<ul class="submenu">
+<li><a href="parte1.html">origen</a></li>
+<li><a href="parte2.html">formación</a></li>
+<li><a href="parte3.html">dejar mi tierra</a></li>
+<li><a href="parte4.html">comienzos</a></li>
+<li><a href="parte5.html">reflexión</a></li>
+</ul>
+</li>
+
+<li><a href="galería.html"> galería</a></li>
+</ul>
+</nav>
+
+<button class="music-btn" id="musicToggle">🔊</button>
+
+<audio id="musica" loop>
+<source src="musica/5x.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="whoosh">
+<source src="musica/whoosh.mp3" type="audio/mpeg">
+</audio>
+
+<div class="contenido">
+<div class="titulo">CADA FINAL ES UN NUEVO COMIENZO</div>
+</div>
+
+<!-- LIBRO -->
+<div class="libro">
+
+  <div class="pagina izquierda">
+    <p>
+    Hoy, a mis 20 años y residiendo en Perú, me encuentro en una etapa de reinvención. He decidido llevar esa curiosidad que sentía por los circuitos eléctricos hacia un nuevo horizonte: la tecnología y la computación. Actualmente estudio esta carrera con la convicción de que el software y los sistemas son las herramientas del futuro. 
+    </p>
+
+   
+            
+    </p>
+  </div>
+
+  <div class="pagina derecha">
+    <p>
+      tal como lo fueron los destornilladores en mi infancia.
+​           Mi meta es clara: terminar mis estudios, seguir creciendo profesionalmente y demostrar que siempre es posible volver a empezar desde cero si tienes la voluntad de hierro.
+    </p>
+  </div>
+
+</div>
+
+<video autoplay muted loop>
+<source src="movi/5.mp4">
+</video>
+
+<script>
+const musica = document.getElementById("musica");
+const whoosh = document.getElementById("whoosh");
+const toggle = document.getElementById("musicToggle");
+
+let activo = false;
+let musicaIniciada = false;
+
+window.onload = () => {
+  whoosh.volume = 0.7;
+  whoosh.play().catch(()=>{});
+};
+
+document.addEventListener("mousemove", () => {
+  if (!musicaIniciada) {
+    musica.volume = 0.5;
+    musica.play().catch(()=>{});
+    musicaIniciada = true;
+    activo = true;
+  }
+});
+
+toggle.onclick = () => {
+  if(activo){
+    musica.pause();
+    toggle.innerText = "🔇";
+  } else {
+    musica.play().catch(()=>{});
+    toggle.innerText = "🔊";
+  }
+  activo = !activo;
+};
+</script>
+
+</body>
+</html>
